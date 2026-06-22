@@ -398,7 +398,7 @@ def registrar_venta():
     if encontrado == False:
 
         print("Producto no encontrado")
-        
+
 # ==========================
 # HISTORIAL DE VENTAS
 # ==========================
@@ -419,5 +419,20 @@ def mostrar_historial():
             "| Cantidad:", historial_cantidades[i],
             "| Total:", historial_totales[i]
         )
+# ==========================
+# REPORTE DE VENTAS
+# ==========================
+
+def reporte_ventas():
+
+    print("\n--- REPORTE DE VENTAS ---")
+
+    total_general = 0
+
+    for i in range(len(historial_totales)):
+
+        total_general = total_general + historial_totales[i]
+
+    print("Total vendido:", total_general)
 
 
