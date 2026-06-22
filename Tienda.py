@@ -399,4 +399,25 @@ def registrar_venta():
 
         print("Producto no encontrado")
         
+# ==========================
+# HISTORIAL DE VENTAS
+# ==========================
+
+def mostrar_historial():
+
+    print("\n--- HISTORIAL DE VENTAS ---")
+
+    if len(historial_ventas) == 0:
+
+        print("No existen ventas")
+        return
+
+    for i in range(len(historial_ventas)):
+
+        print(
+            "Producto:", historial_ventas[i],
+            "| Cantidad:", historial_cantidades[i],
+            "| Total:", historial_totales[i]
+        )
+
 
