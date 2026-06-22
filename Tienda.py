@@ -340,4 +340,63 @@ def eliminar_producto():
 
     if encontrado == False:
         print("Producto no encontrado")
+# ==========================
+# REGISTRAR VENTA
+# ==========================
+
+def registrar_venta():
+
+    print("\n--- REGISTRAR VENTA ---")
+
+    nombre = input("Producto vendido: ").strip().lower()
+
+    encontrado = False
+
+    for i in range(len(nombres_productos)):
+
+        if nombres_productos[i].strip().lower() == nombre:
+
+            encontrado = True
+
+            cantidad_texto = input("Cantidad vendida: ")
+
+            while not cantidad_texto.isdigit():
+
+                print("Ingrese solo numeros")
+
+                cantidad_texto = input("Cantidad vendida: ")
+
+            cantidad = int(cantidad_texto)
+
+            if cantidad > stock_productos[i]:
+
+                print("No hay suficiente stock")
+                return
+
+            stock_productos[i] = stock_productos[i] - cantidad
+
+            total = cantidad * precios_productos[i]
+
+            historial_ventas.append(nombre)
+            historial_cantidades.append(cantidad)
+            historial_totales.append(total)
+
+            guardar_archivo()
+
+            print("\nVENTA REGISTRADA")
+            print("Producto:", nombre)
+            print("Cantidad:", cantidad)
+            print("Total vendido:", total)
+            print("Stock restante:", stock_productos[i])
+
+            if stock_productos[i] <= 5:
+
+                print("ALERTA: STOCK BAJO")
+
+            return
+
+    if encontrado == False:
+
+        print("Producto no encontrado")
+        
 
