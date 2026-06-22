@@ -271,3 +271,43 @@ def buscar_producto():
 
     if not encontrado:
         print("Producto no encontrado")
+
+# ==========================
+# UPDATE
+# ==========================
+
+def actualizar_producto():
+
+    nombre = input("Producto a actualizar: ").strip().lower()
+
+    encontrado = False
+
+    for i in range(len(nombres_productos)):
+
+        if nombres_productos[i].strip().lower() == nombre:
+
+            cantidad_texto = input("Nuevo stock: ")
+
+            while not cantidad_texto.isdigit():
+                print("Ingrese solo numeros")
+                cantidad_texto = input("Nuevo stock: ")
+
+            nuevo_stock = int(cantidad_texto)
+
+            if nuevo_stock > MAX_STOCK:
+               print("⚠ ERROR: EL STOCK MAXIMO PERMITIDO ES 36")
+               return
+
+            if nuevo_stock == MAX_STOCK:
+               print("⚠ SE HA LLEGADO AL LIMITE DEL STOCK (36)")
+
+            stock_productos[i] = nuevo_stock
+
+            guardar_archivo()
+
+            print("Producto actualizado")
+
+            encontrado = True
+
+    if encontrado == False:
+        print("Producto no encontrado")
