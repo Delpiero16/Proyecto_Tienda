@@ -196,3 +196,47 @@ def agregar_producto():
 
         if cantidad == MAX_STOCK:
             print("⚠ SE HA LLEGADO AL LIMITE DEL STOCK (36)")
+
+# ==========================
+# READ (mostar_producto)
+# Cumple la funcion CRUD
+# Muestra en pantalla todos los productos guardados en el inventario.
+# Presenta categoria, nombre, precio y stock de cada producto.
+# ==========================
+
+def mostrar_productos():
+
+    print("\n--- INVENTARIO ---")
+
+    if len(nombres_productos) == 0:
+        print("No existen productos")
+        return
+
+    for i in range(len(nombres_productos)):
+
+       print(
+           "Categoria:", categorias[i],
+           "| Producto:", nombres_productos[i],
+           "| Precio:", round(precios_productos[i], 2),
+           "| Stock:", stock_productos[i]
+        )
+
+# ==========================
+# RESUMEN DEL INVENTARIO
+# Sirve para mostrar un resumen general del inventario.
+# Indica cuantos productos hay registrados y suma todo el stock alamcenado.
+# ==========================
+
+def resumen_inventario():
+
+    print("\n--- RESUMEN DEL INVENTARIO ---")
+
+    print("Cantidad de productos:", len(nombres_productos))
+
+    total_stock = 0
+
+    for i in range(len(stock_productos)):
+
+        total_stock = total_stock + stock_productos[i]
+
+    print("Total de unidades almacenadas:", total_stock)
