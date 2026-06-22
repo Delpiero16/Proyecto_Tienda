@@ -311,3 +311,33 @@ def actualizar_producto():
 
     if encontrado == False:
         print("Producto no encontrado")
+# ==========================
+# DELETE
+# ==========================
+
+def eliminar_producto():
+
+    nombre = input("Producto a eliminar: ").strip().lower()
+
+    encontrado = False
+
+    for i in range(len(nombres_productos)):
+
+        if nombres_productos[i].strip().lower() == nombre:
+
+            categorias.pop(i)
+            nombres_productos.pop(i)
+            stock_productos.pop(i)
+            precios_productos.pop(i)
+
+            guardar_archivo()
+
+            print("Producto eliminado")
+
+            encontrado = True
+
+            break
+
+    if encontrado == False:
+        print("Producto no encontrado")
+
