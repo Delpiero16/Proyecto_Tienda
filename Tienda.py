@@ -29,3 +29,35 @@ historial_totales = []
 # Constante que indica el limite del sistema 
 MAX_PRODUCTOS = 50
 MAX_STOCK = 36
+
+# ==========================
+# CARGAR ARCHIVO
+# Sirve para leer los productos guardados en el invetario.txt
+# Se ejecuta al iniciar el programa para recuperar la informacion anterior.
+# Si el archivo no existe, no carga nada y el programa empieza vacio.
+# ==========================
+
+def cargar_archivo():
+
+    if not os.path.exists(ARCHIVO):
+        return
+
+    with open(ARCHIVO, "r", encoding="utf-8") as archivo:
+
+        for linea in archivo: 
+
+            datos = linea.strip().split(",")
+
+            if len(datos) == 3:
+
+                categorias.append(datos[0])
+                nombres_productos.append(datos[1])
+                stock_productos.append(int(datos[2]))
+                precios_productos.append(0)
+
+            elif len(datos) == 4:
+
+                categorias.append(datos[0])
+                nombres_productos.append(datos[1])
+                stock_productos.append(int(datos[2]))
+                precios_productos.append(float(datos[3]))
