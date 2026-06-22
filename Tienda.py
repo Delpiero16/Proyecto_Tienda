@@ -434,5 +434,29 @@ def reporte_ventas():
         total_general = total_general + historial_totales[i]
 
     print("Total vendido:", total_general)
+# ==========================
+# REPORTE STOCK BAJO
+# ==========================
+
+def reporte_stock_bajo():
+
+    print("\n--- PRODUCTOS CON STOCK BAJO ---")
+
+    encontrado = False
+
+    for i in range(len(nombres_productos)):
+
+        if stock_productos[i] <= 5:
+
+            print(
+                "Producto:", nombres_productos[i],
+                "| Stock:", stock_productos[i]
+            )
+
+            encontrado = True
+
+    if encontrado == False:
+
+        print("No existen productos con stock bajo")
 
 
