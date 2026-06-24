@@ -274,6 +274,9 @@ def buscar_producto():
 
 # ==========================
 # UPDATE
+#Esta función sirve para cambiar el stock de un producto.
+#Primero pide el nombre del producto.
+#Si lo encuentra, pide el nuevo stock.
 # ==========================
 
 def actualizar_producto():
@@ -313,6 +316,9 @@ def actualizar_producto():
         print("Producto no encontrado")
 # ==========================
 # DELETE
+#Esta función sirve para eliminar un producto del inventario.
+#Busca el producto por su nombre.
+#Si lo encuentra, elimina sus datos de todas las listas usando
 # ==========================
 
 def eliminar_producto():
@@ -342,6 +348,9 @@ def eliminar_producto():
         print("Producto no encontrado")
 # ==========================
 # REGISTRAR VENTA
+#Esta función sirve para registrar la venta de un producto.
+#Primero pide el nombre del producto vendido.
+#Si el producto existe, pide la cantidad vendida.
 # ==========================
 
 def registrar_venta():
@@ -401,6 +410,8 @@ def registrar_venta():
 
 # ==========================
 # HISTORIAL DE VENTAS
+#Esta función sirve para mostrar todas las ventas 
+# realizadas durante la ejecución del programa.
 # ==========================
 
 def mostrar_historial():
@@ -421,6 +432,10 @@ def mostrar_historial():
         )
 # ==========================
 # REPORTE DE VENTAS
+#Esta función sirve para mostrar el total general de dinero vendido.
+#Suma todos los valores guardados en:
+#historial_totales
+#Luego muestra el total vendido.
 # ==========================
 
 def reporte_ventas():
@@ -436,6 +451,9 @@ def reporte_ventas():
     print("Total vendido:", total_general)
 # ==========================
 # REPORTE STOCK BAJO
+#Esta función sirve para mostrar los productos que tienen poco stock.
+#Revisa todos los productos y muestra los que tienen stock menor o igual a 5.
+#Sirve para saber qué productos se deben reponer pronto.
 # ==========================
 
 def reporte_stock_bajo():
@@ -459,4 +477,75 @@ def reporte_stock_bajo():
 
         print("No existen productos con stock bajo")
 
+# ==========================
+# MENU
+#Esta función es la parte principal del programa.
+#Muestra las opciones que el usuario puede elegir:
+# ==========================
+
+def menu():
+
+    opcion = "0"
+
+    while opcion != "11":
+
+        print("\n===== SISTEMA DE INVENTARIO =====")
+        print("Productos:", len(nombres_productos), "/", MAX_PRODUCTOS)
+        print("1. Agregar producto")
+        print("2. Mostrar productos")
+        print("3. Buscar producto")
+        print("4. Actualizar producto")
+        print("5. Eliminar producto")
+        print("6. Registrar venta")
+        print("7. Historial de ventas")
+        print("8. Reporte stock bajo")
+        print("9. Resumen inventario")
+        print("10. Reporte de ventas")
+        print("11. Salir")
+        opcion = input("Seleccione opcion: ")
+
+        if opcion == "1":
+            agregar_producto()
+
+        elif opcion == "2":
+            mostrar_productos()
+
+        elif opcion == "3":
+            buscar_producto()
+
+        elif opcion == "4":
+            actualizar_producto()
+
+        elif opcion == "5":
+            eliminar_producto()
+
+        elif opcion == "6":
+            registrar_venta()
+
+        elif opcion == "7":
+            mostrar_historial()
+
+        elif opcion == "8":
+            reporte_stock_bajo()
+
+        elif opcion == "9":
+            resumen_inventario()
+
+        elif opcion == "10":
+            reporte_ventas()
+
+        elif opcion == "11":
+            print("Programa finalizado")
+        
+        else:
+            print("Opcion incorrecta")
+
+# ==========================
+# INICIO DEL PROGRAMA
+#Primero carga los datos guardados en el archivo.
+#Luego muestra el menú para que el usuario use el sistema.
+# ==========================
+
+cargar_archivo()
+menu()
 
