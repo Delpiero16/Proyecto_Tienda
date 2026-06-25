@@ -1,0 +1,4 @@
+Bebidas,Big Cola,36,2.5
+Bebidas,Inca Cola,10,3.0
+Fideos,Spagetty,36,4.5
+Limpieza,Escoba,4,2.0
