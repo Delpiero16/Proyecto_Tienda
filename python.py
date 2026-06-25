@@ -59,4 +59,39 @@ def cargar_archivo():
         stock_productos.append(int(datos[2]))
         precios_productos.append(float(datos[3]))
 
+# ==========================
+# GUARDAR ARCHIVO
+# Sirve para guardar todos los productos del inventario en el archivo inventario.txt
+# Se usa despues de agregar, eliminar productos o registrar ventas. 
+# ==========================
+
+def guardar_archivo():
+
+  with open(ARCHIVO, "w", encoding="utf-8") as archivo:
+
+    for i in range(len(nombres_productos)):
+
+      archivo.write(
+        categorias[i] + "," +
+        nombres_productos[i] + "," +
+        str(stock_productos[i]) + "," +
+        str(precios_productos[i]) + "\n"
+      )
+
+def mostrar_tabla_productos():
+
+  print("\n================== INVENTARIO ==================")
+  print("N° PRODUCTO       PRECIO   STOCK")
+  print("------------------------------------------------")
+
+  for i in range(len(nombres_productos)):
+
+    print(
+      f"{i + 1:<3} {nombres_productos[i]:<22} "
+      f"S/. {precios_productos[i]:<8.2f} "
+      f"{stock_productos[i]}"
+    )
+    
+  print("------------------------------------------------")
+
 
