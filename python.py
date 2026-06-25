@@ -577,3 +577,12 @@ def menu():
 
       else:
           print("Opcion incorrecta")
+
+# ==========================
+# INICIO DEL PROGRAMA
+#Primero carga los datos guardados en el archivo.
+#Luego muestra el menú para que el usuario use el sistema.
+# ==========================
+
+cargar_archivo()
+menu()
