@@ -249,7 +249,43 @@ def resumen_inventario():
   total_stock = 0
 
   for i in range(len(stock_productos)):
-    
     total_stock = total_stock + stock_productos[i]
 
   print("Total de unidades almacenadas:", total_stock)
+
+# ==========================
+# BUSCAR
+# Sirve para buscar un producto por su nombre.
+# Compara el nombre registrado con los productos registrados.
+# si lo encuentra, muestra su categoria, precio y stock.
+# ==========================
+
+def buscar_producto():
+
+  print("\n--- BUSCAR PRODUCTO ---")
+
+  if len(nombres_productos) == 0:
+    print("No existen productos registrados.")
+    return
+
+  mostrar_tabla_productos()
+
+  opcion = input("Seleccione el número del producto: ")
+
+  while not opcion.isdigit():
+    print("Ingrese solo números.")
+    opcion = input("Seleccione el número del producto: ")
+
+  opcion = int(opcion)
+
+  if opcion < 1 or opcion > len(nombres_productos):
+    print("Número incorrecto.")
+    return
+
+  indice = opcion - 1
+
+  print("\nProducto encontrado")
+  print("Categoria:", categorias[indice])
+  print("Producto:", nombres_productos[indice])
+  print("Precio:", precios_productos[indice])
+  print("Stock:", stock_productos[indice])
