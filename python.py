@@ -91,7 +91,121 @@ def mostrar_tabla_productos():
       f"S/. {precios_productos[i]:<8.2f} "
       f"{stock_productos[i]}"
     )
-    
+
   print("------------------------------------------------")
 
+# ==========================
+# CREATE(agregar_producto)
+# Cumple la funcion del CRUD
+# permite registrar un nuevo producto con categoria, nombre, precio y cantidad.
+# Tambien verifica que no se supere el maximo de productos ni el stock maximo.
+# ==========================
 
+def agregar_producto():
+
+  print("\n--- AGREGAR PRODUCTO ---")
+
+  if len(nombres_productos) >= MAX_PRODUCTOS:
+    print("Error: Se alcanzó el límite de productos.")
+    return
+
+  print("\nCategorias")
+  print("1. Bebidas")
+  print("2. Fideos")
+  print("3. Lacteos")
+  print("4. Snacks")
+  print("5. Limpieza")
+
+  opcion = input("Seleccione categoria: ")
+
+  categoria = ""
+
+  if opcion == "1":
+    categoria = "Bebidas"
+
+  elif opcion == "2":
+    categoria = "Fideos"
+
+  elif opcion == "3":
+    categoria = "Lacteos"
+
+  elif opcion == "4":
+    categoria = "Snacks"
+
+  elif opcion == "5":
+    categoria = "Limpieza"
+
+  else:
+    print("Categoria incorrecta")
+    return
+
+  nombre = input("Nombre del producto: ").strip().title()
+
+  precio_texto = input("Precio del producto: ")
+
+  while not precio_texto.replace(".", "", 1).isdigit():
+
+    print("Ingrese un precio valido")
+
+    precio_texto = input("Precio del producto: ")
+
+  precio = float(precio_texto)
+
+  while nombre == "":
+    print("Nombre inválido")
+    nombre = input("Nombre del producto: ").strip().title()
+
+  cantidad_texto = input("Cantidad: ")
+
+  while not cantidad_texto.isdigit():
+    print("Ingrese solo numeros")
+    cantidad_texto = input("Cantidad: ")
+
+  cantidad = int(cantidad_texto)
+
+  if cantidad > MAX_STOCK:
+    print("Error: Maximo stock permitido =", MAX_STOCK)
+    return
+
+  encontrado = False
+
+  for i in range(len(nombres_productos)):
+
+    if nombres_productos[i] == nombre:
+
+      if stock_productos[i] >= MAX_STOCK:
+        print("⚠ SE HA LLEGADO AL LIMITE DEL STOCK (36)")
+        print("No se puede agregar más cantidad.")
+        return
+
+      if stock_productos[i] + cantidad > MAX_STOCK:
+        print("⚠ ERROR: NO SE PUEDE SUPERAR EL STOCK MAXIMO DE 36")
+        print("Stock actual:", stock_productos[i])
+        return
+
+      stock_productos[i] += cantidad
+      precios_productos[i] = precio
+
+      encontrado = True
+
+      guardar_archivo()
+
+      print("Stock actualizado")
+      print("Nuevo stock:", stock_productos[i])
+
+      if stock_productos[i] == MAX_STOCK:
+        print("⚠ SE HA LLEGADO AL LIMITE DEL STOCK (36)")
+
+  if encontrado == False:
+
+    categorias.append(categoria)
+    nombres_productos.append(nombre)
+    stock_productos.append(cantidad)
+    precios_productos.append(precio)
+
+    guardar_archivo()
+
+    print("Producto agregado correctamente")
+
+    if cantidad == MAX_STOCK:
+      print("⚠ SE HA LLEGADO AL LIMITE DEL STOCK (36)")
