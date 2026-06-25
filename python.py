@@ -289,3 +289,57 @@ def buscar_producto():
   print("Producto:", nombres_productos[indice])
   print("Precio:", precios_productos[indice])
   print("Stock:", stock_productos[indice])
+
+# ==========================
+# UPDATE
+#Esta función sirve para cambiar el stock de un producto.
+#Primero pide el nombre del producto.
+#Si lo encuentra, pide el nuevo stock.
+# ==========================
+
+def actualizar_producto():
+
+  print("\n--- ACTUALIZAR PRODUCTO ---")
+
+  if len(nombres_productos) == 0:
+    print("No existen productos registrados.")
+    return
+
+  mostrar_tabla_productos()
+
+  opcion = input("Seleccione el número del producto: ")
+
+  while not opcion.isdigit():
+    print("Ingrese solo números.")
+    opcion = input("Seleccione el número del producto: ")
+
+  opcion = int(opcion)
+
+  if opcion < 1 or opcion > len(nombres_productos):
+    print("Número incorrecto.")
+    return
+
+  indice = opcion - 1
+
+  cantidad_texto = input("Nuevo stock: ")
+
+  while not cantidad_texto.isdigit():
+    print("Ingrese solo números.")
+    cantidad_texto = input("Nuevo stock: ")
+
+  nuevo_stock = int(cantidad_texto)
+
+  if nuevo_stock > MAX_STOCK:
+    print("⚠ ERROR: EL STOCK MÁXIMO ES 36")
+    return
+
+  if nuevo_stock == MAX_STOCK:
+    print("⚠ SE HA LLEGADO AL LÍMITE DEL STOCK (36)")
+
+  stock_productos[indice] = nuevo_stock
+
+  guardar_archivo()
+
+  print("\nProducto actualizado correctamente.")
+  print("Producto:", nombres_productos[indice])
+  print("Nuevo stock:", stock_productos[indice])
