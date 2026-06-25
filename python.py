@@ -445,3 +445,25 @@ def registrar_venta():
 
   if stock_productos[indice] <= 5:
     print("⚠ ALERTA: STOCK BAJO")
+
+# ==========================
+# HISTORIAL DE VENTAS
+#Esta función sirve para mostrar todas las ventas 
+# realizadas durante la ejecución del programa.
+# ==========================
+
+def mostrar_historial():
+
+  print("\n--- HISTORIAL DE VENTAS ---")
+
+  if len(historial_ventas) == 0:
+    print("No existen ventas")
+    return
+
+  for i in range(len(historial_ventas)):
+
+    print(
+      "Producto:", historial_ventas[i],
+      "| Cantidad:", historial_cantidades[i],
+      "| Total:", historial_totales[i]
+    )
