@@ -233,3 +233,23 @@ def mostrar_productos():
       "| Precio:", round(precios_productos[i], 2),
       "| Stock:", stock_productos[i]
     )
+
+# ==========================
+# RESUMEN DEL INVENTARIO
+# Sirve para mostrar un resumen general del inventario.
+# Indica cuantos productos hay registrados y suma todo el stock alamcenado.
+# ==========================
+
+def resumen_inventario():
+
+  print("\n--- RESUMEN DEL INVENTARIO ---")
+
+  print("Cantidad de productos:", len(nombres_productos))
+
+  total_stock = 0
+
+  for i in range(len(stock_productos)):
+    
+    total_stock = total_stock + stock_productos[i]
+
+  print("Total de unidades almacenadas:", total_stock)
