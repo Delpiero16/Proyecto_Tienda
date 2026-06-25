@@ -383,3 +383,65 @@ def eliminar_producto():
    precios_productos.pop(indice)
 
    guardar_archivo()
+
+# ==========================
+# REGISTRAR VENTA
+#Esta función sirve para registrar la venta de un producto.
+#Primero pide el nombre del producto vendido.
+#Si el producto existe, pide la cantidad vendida.
+# ==========================
+
+def registrar_venta():
+
+  print("\n--- REGISTRAR VENTA ---")
+
+  if len(nombres_productos) == 0:
+    print("No existen productos registrados.")
+    return
+
+  mostrar_tabla_productos()
+
+  opcion = input("Seleccione el número del producto: ")
+
+  while not opcion.isdigit():
+    print("Ingrese solo números.")
+    opcion = input("Seleccione el número del producto: ")
+
+  opcion = int(opcion)
+
+  if opcion < 1 or opcion > len(nombres_productos):
+    print("Número incorrecto.")
+    return
+
+  indice = opcion - 1
+
+  cantidad_texto = input("Cantidad vendida: ")
+
+  while not cantidad_texto.isdigit():
+    print("Ingrese solo números.")
+    cantidad_texto = input("Cantidad vendida: ")
+
+  cantidad = int(cantidad_texto)
+
+  if cantidad > stock_productos[indice]:
+    print("No hay suficiente stock.")
+    return
+
+  stock_productos[indice] -= cantidad
+
+  total = cantidad * precios_productos[indice]
+
+  historial_ventas.append(nombres_productos[indice])
+  historial_cantidades.append(cantidad)
+  historial_totales.append(total)
+
+  guardar_archivo()
+
+  print("\nVENTA REGISTRADA")
+  print("Producto:", nombres_productos[indice])
+  print("Cantidad:", cantidad)
+  print("Total vendido: S/.", total)
+  print("Stock restante:", stock_productos[indice])
+
+  if stock_productos[indice] <= 5:
+    print("⚠ ALERTA: STOCK BAJO")
