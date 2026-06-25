@@ -343,3 +343,43 @@ def actualizar_producto():
   print("\nProducto actualizado correctamente.")
   print("Producto:", nombres_productos[indice])
   print("Nuevo stock:", stock_productos[indice])
+
+# ==========================
+# DELETE
+#Esta función sirve para eliminar un producto del inventario.
+#Busca el producto por su nombre.
+#Si lo encuentra, elimina sus datos de todas las listas usando
+# ==========================
+
+def eliminar_producto():
+
+   print("\n--- ELIMINAR PRODUCTO ---")
+
+   if len(nombres_productos) == 0:
+    print("No existen productos registrados.")
+    return
+
+   mostrar_tabla_productos()
+
+   opcion = input("Seleccione el número del producto: ")
+
+   while not opcion.isdigit():
+    print("Ingrese solo números.")
+    opcion = input("Seleccione el número del producto: ")
+
+   opcion = int(opcion)
+
+   if opcion < 1 or opcion > len(nombres_productos):
+    print("Número incorrecto.")
+    return
+
+   indice = opcion - 1
+
+   print("Producto eliminado:", nombres_productos[indice])
+
+   categorias.pop(indice)
+   nombres_productos.pop(indice)
+   stock_productos.pop(indice)
+   precios_productos.pop(indice)
+
+   guardar_archivo()
