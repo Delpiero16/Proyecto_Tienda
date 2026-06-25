@@ -514,3 +514,66 @@ def reporte_stock_bajo():
     if encontrado == False:
 
      print("No existen productos con stock bajo")
+
+# ==========================
+# MENU
+#Esta función es la parte principal del programa.
+#Muestra las opciones que el usuario puede elegir:
+# ==========================
+
+def menu():
+
+   opcion = "0"
+
+   while opcion != "11":
+
+      print("\n===== SISTEMA DE INVENTARIO =====")
+      print("Productos:", len(nombres_productos), "/", MAX_PRODUCTOS)
+      print("1. Agregar producto")
+      print("2. Mostrar productos")
+      print("3. Buscar producto")
+      print("4. Actualizar producto")
+      print("5. Eliminar producto")
+      print("6. Registrar venta")
+      print("7. Historial de ventas")
+      print("8. Reporte stock bajo")
+      print("9. Resumen inventario")
+      print("10. Reporte de ventas")
+      print("11. Salir")
+      opcion = input("Seleccione opcion: ")
+
+      if opcion == "1":
+          agregar_producto()
+
+      elif opcion == "2":
+           mostrar_productos()
+
+      elif opcion == "3":
+          buscar_producto()
+
+      elif opcion == "4":
+          actualizar_producto()
+
+      elif opcion == "5":
+          eliminar_producto()
+
+      elif opcion == "6":
+          registrar_venta()
+
+      elif opcion == "7":
+          mostrar_historial()
+
+      elif opcion == "8":
+          reporte_stock_bajo()
+
+      elif opcion == "9":
+          resumen_inventario()
+
+      elif opcion == "10":
+          reporte_ventas()
+
+      elif opcion == "11":
+          print("Programa finalizado")
+
+      else:
+          print("Opcion incorrecta")
